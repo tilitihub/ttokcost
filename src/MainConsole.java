@@ -2,52 +2,44 @@
  * Sallai András, 2024-02-19
  * Copyright (c) 2024, Sallai András
  * Licenc: MIT
- * Refakotárlás esetén jelölje meg, ki, mikor.
+ * Refakotárlt: Tiliczki Tibor
+ * Group: Szoft II-1-E
+ * Date: 2024-02-21
+ * Github: https://github.com/tilitihub/ttokcost.git
+ * @ kopirájtkriptobájt
  */
 
-import java.util.Scanner;
+ import java.util.Scanner;
 
-public class MainConsole {
-    /*
-     * A csoni objektum osztáj tagjává kellen tenni.
-     * Meg fontolandü a egy try() utasításba zárása is,
-     * így le lesz zárva biztosan.
-     * Ezzel valamit kezdünk.
-     * Most jó lesz így.
-     */
-    /* Szállítási költségecske tárolása a memóriában */
-    //szallitas
-    String szal = "";
-
-/* Most jön a nevecske */
-// A bekért név tárolása:
-String ez = "";
-
-    /* Most jön a mennyiségecske */
-    //Mennyiség:
-    String ris = "";    
-    public MainConsole() {
-        /* dísz sor kiírása */
-        System.out.println("╔═════════════════════════════════════════╗");
-        System.out.printf("║%17s%25s\n", "Projekt költsége", "║");
-        System.out.println("╚═════════════════════════════════════════╝");        
-        
-        /* A bekérő: */
-        Scanner csoni = new Scanner(System.in);        
-
-System.out.println("──────────────────────────────────────────");
-System.out.print("Szállítási költség: ");
-szal = csoni.nextLine();
-
-System.out.println("──────────────────────────────────────────");
-System.out.print("Üzleti költség: ");
-ez = csoni.nextLine();
-
-System.out.println("──────────────────────────────────────────");
- System.out.print("Javítási költség: ");
-  ris = csoni.nextLine();        
-  Koltseg k = new Koltseg(szal, ez, ris);
-  Filehandler f = new Filehandler();
-  f.i(k);
-    }
-}
+ public class MainConsole {
+     private String shippingCost;
+     private String businessCost;
+     private String repairCost;
+ 
+     public MainConsole() {
+         printHeader();
+         Scanner scanner = new Scanner(System.in);
+         shippingCost = readCost("Szállítási költség: ", scanner);
+         businessCost = readCost("Üzleti költség: ", scanner);
+         repairCost = readCost("Javítási költség: ", scanner);
+         saveCosts(shippingCost, businessCost, repairCost);
+     }
+ 
+     private void printHeader() {
+         System.out.println("╔═════════════════════════════════════════╗");
+         System.out.printf("║%17s%25s\n", "Projekt költsége", "║");
+         System.out.println("╚═════════════════════════════════════════╝");
+     }
+ 
+     private String readCost(String prompt, Scanner scanner) {
+         System.out.println("──────────────────────────────────────────");
+         System.out.print(prompt);
+         return scanner.nextLine();
+     }
+ 
+     private void saveCosts(String shippingCost, String businessCost, String repairCost) {
+         Cost cost = new Cost(shippingCost, businessCost, repairCost);
+         FileHandler fileHandler = new FileHandler();
+         fileHandler.save(cost);
+     }
+ }
