@@ -2,7 +2,7 @@
  * Sallai András, 2024-02-19
  * Copyright (c) 2024, Sallai András
  * Licenc: MIT
- * Refakotárlt: Tiliczki Tibor
+ * Refaktorált: Tiliczki Tibor
  * Group: Szoft II-1-E
  * Date: 2024-02-21
  * Github: https://github.com/tilitihub/ttokcost.git

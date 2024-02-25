@@ -1,6 +1,6 @@
 <<<<<<< HEAD
 # Költség kezelő program
- * Refakotárlt: Tiliczki Tibor
+ * Refaktorált: Tiliczki Tibor
  * Group: Szoft II-1-E
  * Date: 2024-02-21
  * Github: https://github.com/tilitihub/ttokcost.git
